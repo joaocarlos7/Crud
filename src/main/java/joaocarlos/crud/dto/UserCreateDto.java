@@ -7,5 +7,4 @@ package joaocarlos.crud.dto;
 public record UserCreateDto(Long id, String name, String mail, String password) {
 
 
-
 }
