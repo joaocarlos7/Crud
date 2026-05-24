@@ -29,3 +29,22 @@ src/main/java/joaocarlos/crud
 ├── repository
 ├── service
 └── CrudApplication.java
+
+---
+
+# Objetivo do projeto
+
+Este projeto tem como objetivo praticar os principais fundamentos de uma API REST com Spring Boot:
+
+criação de endpoints;
+uso de DTOs;
+persistência com JPA;
+conexão com PostgreSQL;
+separação entre Controller, Service e Repository;
+testes de API.
+
+---
+
+# Autor
+
+Projeto criado por João Carlos Machado.
