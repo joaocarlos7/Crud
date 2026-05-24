@@ -39,4 +39,17 @@ public class TodoController {
     void delete(@PathVariable("id") Long id) {
         todoService.delete(id);
     }
+
+
+    @GetMapping("/searchTitle")
+    List<TodoDto> findByTitle(@RequestParam String title) {
+        return todoService.findByTitle(title);
+    }
+
+    @GetMapping("/searchDescription")
+    List<TodoDto> findByDescription(@RequestParam String description) {
+        return todoService.findByDescription(description);
+    }
+
+
 }

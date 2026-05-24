@@ -9,15 +9,13 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service // Anotação para indicar que é um Service
+@Service
 
-    // Onde fica toda a lógica
 public class UserService {
 
-    // Declara o repositório
     private final UserRepository userRepository;
 
-    // Injeção das dependências com construtor
+    // Injeção de dependência
     public UserService (UserRepository userRepository) {
         this.userRepository = userRepository;
     }
@@ -57,14 +55,14 @@ public class UserService {
     public void delete(Long id) {
         userRepository.deleteById(id);
     }
-    // Listar
+    // Listar todos
     public List<UserDto> list() {
         Sort sort = Sort.by("name").ascending();
         return userRepository.findAll(sort).stream().
                 map(this::toDto).
                 toList();
     }
-
+    // Encontrar pelo ID
     public UserDto findById(Long id) {
         return userRepository.findById(id)
                 .map(this::toDto)
