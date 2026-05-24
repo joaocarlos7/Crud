@@ -3,7 +3,9 @@ package joaocarlos.crud.service;
 import joaocarlos.crud.dto.TodoCreateDto;
 import joaocarlos.crud.dto.TodoDto;
 import joaocarlos.crud.entity.Todo;
+import joaocarlos.crud.entity.User;
 import joaocarlos.crud.repository.TodoRepository;
+import joaocarlos.crud.repository.UserRepository;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -13,8 +15,11 @@ import java.util.List;
 public class TodoService {
 
     private final TodoRepository todoRepository;
-    public TodoService(TodoRepository todoRepository) {
+    private final UserRepository userRepository;
+
+    public TodoService(TodoRepository todoRepository, UserRepository userRepository) {
         this.todoRepository = todoRepository;
+        this.userRepository = userRepository;
     }
 
     private TodoDto toDto(Todo todo) {
@@ -31,7 +36,12 @@ public class TodoService {
 
 
     public TodoDto create (TodoCreateDto dto) {
-        return toDto(todoRepository.save(toEntity(dto)));
+        User user = userRepository.findById(dto.userId())
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        Todo todo = toEntity(dto);
+        todo.setUser(user);
+
+        return toDto(todoRepository.save(todo));
     }
     public TodoDto update (long id, TodoCreateDto dto) {
         Todo todo = todoRepository.findById(id).

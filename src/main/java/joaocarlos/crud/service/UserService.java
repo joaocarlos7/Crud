@@ -65,5 +65,10 @@ public class UserService {
                 toList();
     }
 
+    public UserDto findById(Long id) {
+        return userRepository.findById(id)
+                .map(this::toDto)
+                .orElseThrow(() -> new RuntimeException("User not found: " + id));
+    }
 
 }

@@ -3,6 +3,8 @@ package joaocarlos.crud.controller;
 
 import joaocarlos.crud.dto.TodoCreateDto;
 import joaocarlos.crud.dto.TodoDto;
+import joaocarlos.crud.dto.UserCreateDto;
+import joaocarlos.crud.dto.UserDto;
 import joaocarlos.crud.service.TodoService;
 import org.springframework.web.bind.annotation.*;
 

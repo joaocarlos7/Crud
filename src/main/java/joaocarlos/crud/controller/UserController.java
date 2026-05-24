@@ -17,7 +17,11 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping // Irá requisitar um usuário
+    @GetMapping("{id}")
+    UserDto getUserById(@PathVariable Long id) {
+        return userService.findById(id);
+    }
+    @PostMapping(consumes = "application/json") // Irá requisitar um usuário
     UserDto create(@RequestBody UserCreateDto user) {
         return userService.create(user);
     }
